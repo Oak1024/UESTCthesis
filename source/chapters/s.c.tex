@@ -1,0 +1,128 @@
+\noindent
+\ttfamily
+\hlstd{}\hllin{01\ }\hlkwb{void\ }\hlstd{}\hlkwd{press\textunderscore string}\hlstd{}\hlopt{(}\hlstd{cap\ }\hlopt{{*}\ }\hlstd{cap\textunderscore this}\hlopt{);}\\
+\hllin{02\ }\hlstd{}\hlkwb{void}\hlstd{\ \ }\hlkwb{}\hlstd{}\hlkwd{key\textunderscore cap\textunderscore add}\hlstd{}\hlopt{(}\hlstd{cap}\hlopt{{*}\ }\hlstd{cap\textunderscore this}\hlopt{);}\\
+\hllin{03\ }\hlstd{u8\ }\hlkwd{mode\textunderscore line\textunderscore process}\hlstd{}\hlopt{(}\hlstd{u8}\hlopt{{*}\ }\hlstd{read\textunderscore buf}\hlopt{,}\hlstd{u32\ ptr}\hlopt{{[}}\hlstd{}\hlnum{2}\hlstd{}\hlopt{{]})}\\
+\hllin{04\ }\hlstd{}\hlopt{\{}\\
+\hllin{05\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{u32\ i}\hlopt{=}\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\\
+\hllin{06\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwb{static\ }\hlstd{block\textunderscore info\ block}\hlopt{;}\\
+\hllin{07\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwb{static\ }\hlstd{token\textunderscore q\ token\textunderscore queue}\hlopt{;}\\
+\hllin{08\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{cap\ cap\textunderscore this}\hlopt{;}\\
+\hllin{09\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{if}\hlstd{}\hlopt{(}\hlstd{read\textunderscore buf}\hlopt{{[}}\hlstd{ptr}\hlopt{{[}}\hlstd{}\hlnum{0}\hlstd{}\hlopt{{]}{]}==}\hlstd{}\hlstr{';'}\hlstd{}\hlopt{)}\\
+\hllin{10\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{11\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{line\textunderscore cnt}\hlopt{++;}\\
+\hllin{12\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{return\ }\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\\
+\hllin{13\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{14\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{if}\hlstd{}\hlopt{(}\hlstd{}\hlkwd{token\textunderscore ana}\hlstd{}\hlopt{(\&}\hlstd{token\textunderscore queue}\hlopt{,}\hlstd{read\textunderscore buf}\hlopt{,}\hlstd{ptr}\hlopt{))}\\
+\hllin{15\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{return\ }\hlstd{}\hlnum{1}\hlstd{}\hlopt{;}\\
+\hllin{16\ }\hlstd{}\hlppc{\#undef\ ANA\textunderscore DEBUG}\\
+\hllin{17\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{for}\hlstd{}\hlopt{(}\hlstd{i}\hlopt{=}\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\hlstd{i}\hlopt{$<$}\hlstd{token\textunderscore queue}\hlopt{.}\hlstd{lenth}\hlopt{;}\hlstd{i}\hlopt{++)}\\
+\hllin{18\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{19\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{token}\hlopt{{*}\ }\hlstd{token\textunderscore this}\hlopt{=\&(}\hlstd{token\textunderscore queue}\hlopt{.}\hlstd{queue}\hlopt{{[}}\hlstd{i}\hlopt{{]});}\\
+\hllin{20\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwb{enum\ }\hlstd{token\textunderscore class\ class\textunderscore this}\hlopt{=}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\hlstd{token\textunderscore class}\hlopt{;}\\
+\hllin{21\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{switch}\hlstd{}\hlopt{(}\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{)}\\
+\hllin{22\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{23\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{case\ }\hlstd{block\textunderscore raw}\hlopt{:}\\
+\hllin{24\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{block\textunderscore Init}\hlstd{}\hlopt{(\&}\hlstd{block}\hlopt{);}\\
+\hllin{25\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{case\ }\hlstd{contrl\textunderscore key\textunderscore gotton}\hlopt{:}\\
+\hllin{26\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{if}\hlstd{}\hlopt{(}\hlstd{class\textunderscore this}\hlopt{==}\hlstd{token\textunderscore both\textunderscore dir\textunderscore ctrl}\hlopt{)}\\
+\hllin{27\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{28\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\hlstd{control\textunderscore filter}\hlopt{{[}}\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\Righttorque\\
+\hllin{29\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{control\textunderscore filter\textunderscore cnt}\hlopt{++{]}=}\\
+\hllin{30\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{control\textunderscore key\textunderscore decode}\hlstd{}\hlopt{(}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\Righttorque\\
+\hllin{31\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{content}\hlopt{)\textbar }\\
+\hllin{32\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{(}\hlstd{}\hlkwd{control\textunderscore key\textunderscore decode}\hlstd{}\hlopt{(}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\Righttorque\\
+\hllin{33\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{content}\hlopt{)$<$$<$}\hlstd{}\hlnum{4}\hlstd{}\hlopt{);}\\
+\hllin{34\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{=}\hlstd{contrl\textunderscore key\textunderscore gotton}\hlopt{;}\\
+\hllin{35\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{36\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else\ if}\hlstd{}\hlopt{(}\hlstd{class\textunderscore this}\hlopt{==}\hlstd{token\textunderscore dir\textunderscore ctrl}\hlopt{)}\\
+\hllin{37\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{38\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{if}\hlstd{}\hlopt{(}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\hlstd{content}\hlopt{\&}\hlstd{}\hlnum{0x80}\hlstd{}\hlopt{)}\\
+\hllin{39\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{40\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\hlstd{control\textunderscore filter}\hlopt{{[}}\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\Righttorque\\
+\hllin{41\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{control\textunderscore filter\textunderscore cnt}\hlopt{++{]}=}\\
+\hllin{42\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{control\textunderscore key\textunderscore decode}\hlstd{}\hlopt{(}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\Righttorque\\
+\hllin{43\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{content}\hlopt{\&(}\hlstd{}\hlnum{0x7f}\hlstd{}\hlopt{));}\\
+\hllin{44\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{45\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else}\\
+\hllin{46\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{47\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\hlstd{control\textunderscore filter}\hlopt{{[}}\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\Righttorque\\
+\hllin{48\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{control\textunderscore filter\textunderscore cnt}\hlopt{++{]}=}\\
+\hllin{49\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{control\textunderscore key\textunderscore decode}\hlstd{}\hlopt{(}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\Righttorque\\
+\hllin{50\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{content}\hlopt{\&(}\hlstd{}\hlnum{0x7f}\hlstd{}\hlopt{))$<$$<$}\hlstd{}\hlnum{4}\hlstd{}\hlopt{;}\\
+\hllin{51\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{52\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{=}\hlstd{contrl\textunderscore key\textunderscore gotton}\hlopt{;}\\
+\hllin{53\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{54\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else\ if}\hlstd{}\hlopt{(}\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{==}\hlstd{block\textunderscore raw}\hlopt{)}\\
+\hllin{55\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{56\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{compile\textunderscore DBG}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"Control\ key\ not\ found!"}\hlstd{}\hlopt{);}\\
+\hllin{57\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{58\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else\ if}\hlstd{}\hlopt{(}\Righttorque\\
+\hllin{59\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{class\textunderscore this}\hlopt{==}\hlstd{token\textunderscore key}\hlopt{\textbar \textbar }\hlstd{class\textunderscore this}\hlopt{==}\hlstd{token\textunderscore long\textunderscore key\Righttorque\\
+\hllin{60\ }}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{)}\\
+\hllin{61\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{62\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{.}\hlstd{key}\hlopt{=}\hlstd{}\hlkwd{token2usb}\hlstd{}\hlopt{(}\hlstd{token\textunderscore this}\hlopt{);}\\
+\hllin{63\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{=}\hlstd{full\textunderscore quick\textunderscore key\textunderscore gotton}\hlopt{;}\\
+\hllin{64\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{65\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else}\\
+\hllin{66\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{67\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{compile\textunderscore DBG}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"Unexpected\ token\textunderscore class\ found\ }\Righttorque\\
+\hllin{68\ }\hlstr{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstr{when\ make\ control\ key!"}\hlstd{}\hlopt{);}\\
+\hllin{69\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{70\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{break}\hlstd{}\hlopt{;}\\
+\hllin{71\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{case\ }\hlstd{full\textunderscore quick\textunderscore key\textunderscore gotton}\hlopt{:}\\
+\hllin{72\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{if}\hlstd{}\hlopt{(}\hlstd{class\textunderscore this}\hlopt{!=}\hlstd{token\textunderscore colon}\hlopt{)}\\
+\hllin{73\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{74\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{compile\textunderscore DBG}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"Didn't\ find\ colon!"}\hlstd{}\hlopt{);}\\
+\hllin{75\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{76\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else}\\
+\hllin{77\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{78\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{=}\hlstd{colon\textunderscore gotton}\hlopt{;}\\
+\hllin{79\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{80\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{break}\hlstd{}\hlopt{;}\\
+\hllin{81\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{case\ }\hlstd{colon\textunderscore gotton}\hlopt{:}\\
+\hllin{82\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{83\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{u32\ k}\hlopt{=}\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\\
+\hllin{84\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{u32\ key\textunderscore cnt}\hlopt{=}\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\\
+\hllin{85\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{u16}\hlopt{{*}\ }\hlstd{key\textunderscore array}\hlopt{;}\\
+\hllin{86\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{for}\hlstd{}\hlopt{(}\hlstd{k}\hlopt{=}\hlstd{i}\hlopt{;}\hlstd{k}\hlopt{$<$}\hlstd{token\textunderscore queue}\hlopt{.}\hlstd{lenth}\hlopt{;}\hlstd{k}\hlopt{++)}\\
+\hllin{87\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{88\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{token}\hlopt{{*}\ }\hlstd{token\textunderscore this}\hlopt{=\&(}\hlstd{token\textunderscore queue}\hlopt{.}\hlstd{queue}\hlopt{{[}}\hlstd{k}\hlopt{{]});}\\
+\hllin{89\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwb{enum\ }\hlstd{token\textunderscore class\ class\textunderscore this}\hlopt{=}\hlstd{token\textunderscore this}\hlopt{{-}$>$}\Righttorque\\
+\hllin{90\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{token\textunderscore class}\hlopt{;}\\
+\hllin{91\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{if}\hlstd{}\hlopt{(}\Righttorque\\
+\hllin{92\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{class\textunderscore this}\hlopt{==}\hlstd{token\textunderscore key}\hlopt{\textbar \textbar }\hlstd{class\textunderscore this}\hlopt{==}\hlstd{token\textunderscore long\Righttorque\\
+\hllin{93\ }}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{\textunderscore key}\hlopt{)}\\
+\hllin{94\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{95\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore cnt}\hlopt{++;}\\
+\hllin{96\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{97\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{else}\\
+\hllin{98\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{99\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{compile\textunderscore DBG}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"Unexpected\ token\textunderscore class\ }\Righttorque\\
+\hllin{100\ }\hlstr{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstr{found\ when\ get\ general\ key!"}\hlstd{}\hlopt{);}\\
+\hllin{101\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{return\ }\hlstd{}\hlnum{1}\hlstd{}\hlopt{;}\\
+\hllin{102\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{103\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{104\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore array}\hlopt{=}\hlstd{}\hlkwd{rt\textunderscore malloc}\hlstd{}\hlopt{(}\hlstd{key\textunderscore cnt}\hlopt{$<$$<$}\hlstd{}\hlnum{1}\hlstd{}\hlopt{);}\\
+\hllin{105\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{for}\hlstd{}\hlopt{(}\hlstd{k}\hlopt{=}\hlstd{i}\hlopt{;}\hlstd{k}\hlopt{$<$}\hlstd{token\textunderscore queue}\hlopt{.}\hlstd{lenth}\hlopt{;}\hlstd{k}\hlopt{++)}\\
+\hllin{106\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\{}\\
+\hllin{107\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore array}\hlopt{{[}}\hlstd{k}\hlopt{{-}}\hlstd{i}\hlopt{{]}=}\hlstd{}\hlkwd{token2usb}\hlstd{}\hlopt{(\&}\hlstd{token\textunderscore queue}\hlopt{.}\hlstd{queue}\hlopt{{[}}\Righttorque\\
+\hllin{108\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{k}\hlopt{{]});}\\
+\hllin{109\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{110\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{cap\textunderscore this}\hlopt{.}\hlstd{filter}\hlopt{=}\hlstd{block}\hlopt{.}\hlstd{filter}\hlopt{;}\\
+\hllin{111\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{cap\textunderscore this}\hlopt{.}\hlstd{key\textunderscore exe}\hlopt{=}\hlstd{press\textunderscore string}\hlopt{;}\\
+\hllin{112\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{cap\textunderscore this}\hlopt{.}\hlstd{string}\hlopt{=}\hlstd{key\textunderscore array}\hlopt{;}\\
+\hllin{113\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{cap\textunderscore this}\hlopt{.}\hlstd{string\textunderscore lenth}\hlopt{=}\hlstd{key\textunderscore cnt}\hlopt{;}\\
+\hllin{114\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{key\textunderscore cap\textunderscore add}\hlstd{}\hlopt{(\&}\hlstd{cap\textunderscore this}\hlopt{);}\\
+\hllin{115\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{block}\hlopt{.}\hlstd{state}\hlopt{=}\hlstd{block\textunderscore raw}\hlopt{;}\\
+\hllin{116\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{goto\ }\hlstd{end}\hlopt{;}\hlstd{\ \ \ \ }\hlopt{}\\
+\hllin{117\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{118\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{119\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlopt{\}}\\
+\hllin{120\ }\hlstd{end}\hlopt{:;}\\
+\hllin{121\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{line\textunderscore cnt}\hlopt{++;}\\
+\hllin{122\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{return\ }\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\\
+\hllin{123\ }\hlstd{}\hlopt{\}}\hlstd{}\\
+\mbox{}
+\normalfont
+\normalsize

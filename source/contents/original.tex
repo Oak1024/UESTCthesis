@@ -1,43 +1,55 @@
 % !Mode:: "TeX:UTF-8"
 
-\chapter{The Name of the Game}
-\section{xxx}
-\subsection{xxx}
-\subsubsection{xxxx}
-\section{xxx}
-\subsection{xxx}
-\subsubsection{xxxx}
-English words like `technology' stem from a Greek root beginning with
-the letters $\tau\epsilon\chi\ldots\,$; and this same Greek word means {\sl
-art\/} as well as technology. Hence the name \TeX, which is an
-uppercase form of $\tau\epsilon\chi$.{TeX (actually \TeX), meaning of}
-$\tau\epsilon\chi$
+\chapter{USB complete}
 
-Insiders pronounce the $\chi$ of \TeX\ as a Greek chi, not as an `x', so that
-\TeX\ rhymes with the word blecchhh. It's the `ch' sound in Scottish words
-like {\sl loch\/} or German words like {\sl ach\/}; it's a Spanish `j' and a
-Russian `kh'. When you say it correctly to your computer, the terminal
-may become slightly moist.
+\section{Timing Constraints and Guarantees}
 
-The purpose of this pronunciation exercise is to remind you that \TeX\ is
-primarily concerned with high-quality technical manuscripts: Its emphasis is
-on art and technology, as in the underlying Greek word. If you merely want
-to produce a passably good document---something acceptable and basically
-readable but not really beautiful---a simpler system will usually suffice.
-With \TeX\ the goal is to produce the {\sl finest\/} quality; this requires
-more attention to detail, but you will not find it much harder to go the
-extra distance, and you'll be able to take special pride in the finished
-product.
+The allowed delays between the token, data, and handshake packets of a USB
+2.0 transaction are very short, intended to allow only for cable delays and
+switching times plus a brief time to allow hardware (not firmware) to determine
+a response, such as data or a status code, in response to a received packet.
 
-On the other hand, it's important to notice another thing about \TeX's name:
-The `E' is out of kilter. This {logo}
-displaced `E' is a reminder that \TeX\ is about typesetting, and it
-distinguishes \TeX\ from other system names. In fact, {TEX} (pronounced
-{\sl tecks\/}) is the admirable {\sl Text EXecutive\/} processor developed by
-{Honeywell Information Systems}. Since these two system names are
-{Bemer, Robert, see TEX, ASCII}
-pronounced quite differently, they should also be spelled differently. The
-correct way to refer to \TeX\ in a computer file, or when using some other
-medium that doesn't allow lowering of the `E', is to type `|TeX|'. Then
-there will be no confusion with similar names, and people will be
-primed to pronounce everything properly.
+A common mistake in writing firmware is to assume that the firmware should
+wait for an interrupt before providing data to send to the host. Instead, before
+the host requests the data, the firmware must copy the data to send into the
+endpoint’s buffer and arm the endpoint to send the data on receiving an IN
+token packet. The interrupt occurs when the transaction completes. After a successful transaction, the interrupt informs the firmware that the endpoint’s
+buffer is ready to store data for the next transaction. If the firmware waits for an
+interrupt before providing the initial data, the interrupt never happens and data
+doesn’t transfer.
+
+A single transaction can carry data bytes up to the maximum packet size the
+device specifies for the endpoint. A data packet with fewer than the maximum
+packet size’s number of bytes is a short packet. A transfer with multiple transactions can take place over multiple frames or microframes, which don’t have to
+be contiguous. For example, in a full-speed bulk transfer of 512 bytes, the maximum number of bytes in a single transaction is 64, so transferring all of the
+data requires at least eight transactions, which may occur in one or more
+frames.
+
+A data packet that contains a Data PID and error-checking bits but no data
+bytes is a zero-length packet(ZLP). A ZLP can indicate the end of a transfer or
+successful completion of a control transfer.
+\section{Split Transactions}
+A USB 2.0 hub communicates with a USB 2.0 host at high speed unless a USB
+1.x hub is between the host and hub. When a low- or full-speed device is
+attached to a USB 2.0 hub, the hub converts between speeds as needed. But
+speed conversion isn’t all a hub does to manage multiple speeds. High speed is
+40* faster than full speed and 320* fasterthan low speed. It doesn’t make sense
+for the entire bus to wait while a hub exchanges low- or full-speed data with a
+device.
+
+The solution is split transactions. A USB 2.0 host uses split transactions when
+communicating with a low- or full-speeddevice on a high-speed bus. What
+would be a single transaction at low or full speed usually requires two types of
+split transactions: one or more start-split transactions to send information to
+the device and one or more complete-split transactions to receive information
+from the device. The exception is isochronous OUT transactions, which don’t
+use complete-split transactions because the device has nothing to send.
+
+Split transactions require more transactions to complete a transfer but make
+better use of bus time because they minimize the time spent waiting for a lowor full-speed device to transfer data. The components responsible for performing split transactions are the USB 2.0 host controller and a USB 2.0 hub that
+has an upstream connection to a high-speed bus segment and a downstream
+connection to a low/full-speed bus segment. The transactions at the device are
+identical whether the host is using split transactions or not. At the host, device
+drivers and application software don’t have to know or care whether the host is
+using split transactions because the protocol is handled at a lower level. Chapter
+15 has more about how the host and hubs manage split transactions.
