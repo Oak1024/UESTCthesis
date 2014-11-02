@@ -1,0 +1,68 @@
+\noindent
+\ttfamily
+\hlstd{}\hllin{01\ }\hlkwa{function\ }\hlstd{}\hlkwd{key\textunderscore handle}\hlstd{}\hlopt{(}\hlstd{data}\hlopt{)}\\
+\hllin{02\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{if\ }\hlstd{macro\textunderscore flag\ }\hlkwa{then}\\
+\hllin{03\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{for\ }\hlstd{i\ }\hlopt{=}\hlstd{}\hlnum{1}\hlstd{}\hlopt{,}\hlstd{}\hlnum{10\ }\hlstd{}\hlkwa{do}\\
+\hllin{04\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}}\hlstd{key\textunderscore index}\hlopt{{]}=}\hlstd{data}\hlopt{{[}}\hlstd{i}\hlopt{{]};}\\
+\hllin{05\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore index}\hlopt{=}\hlstd{key\textunderscore index}\hlopt{+}\hlstd{}\hlnum{1}\hlstd{}\hlopt{;}\\
+\hllin{06\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{end}\\
+\hllin{07\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{end}\\
+\hllin{08\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwb{print}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"}\hlstd{\ \ \ }\hlstr{key}\hlstd{\ \ }\hlstr{"}\hlstd{}\hlopt{..}\hlstd{key\textunderscore index}\hlopt{..}\hlstd{}\hlstr{"}\hlesc{$\backslash$n}\hlstr{"}\hlstd{}\hlopt{);}\\
+\hllin{09\ }\hlstd{}\hlkwa{end}\\
+\hllin{10\ }\hlstd{}\\
+\hllin{11\ }\hlkwa{function\ }\hlstd{}\hlkwd{macro\textunderscore play}\hlstd{}\hlopt{(}\hlstd{data}\hlopt{)}\hlstd{\ \ }\hlopt{}\\
+\hllin{12\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwd{flag\textunderscore set}\hlstd{}\hlopt{(}\hlstd{}\hlnum{2}\hlstd{}\hlopt{,}\hlstd{}\hlnum{0}\hlstd{}\hlopt{);\ }\\
+\hllin{13\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwb{print}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"macro\textunderscore play}\hlesc{$\backslash$n}\hlstr{"}\hlstd{}\hlopt{)\ ;}\\
+\hllin{14\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{local\ }\hlstd{one}\hlopt{=}\hlstd{}\hlnum{0}\hlstd{}\hlopt{;}\\
+\hllin{15\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{for\ }\hlstd{i\ }\hlopt{=}\hlstd{}\hlnum{1}\hlstd{}\hlopt{,}\hlstd{key\textunderscore index}\hlopt{/}\hlstd{}\hlnum{10}\hlstd{}\hlopt{{-}}\hlstd{}\hlnum{1\ }\hlstd{}\hlkwa{do}\\
+\hllin{16\ }\hlstd{\\
+\hllin{17\ }}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{key\textunderscore put\textunderscore pure}\hlstd{}\hlopt{(}\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{1}\hlstd{}\hlopt{{]},}\\
+\hllin{18\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{2}\hlstd{}\hlopt{{]},}\\
+\hllin{19\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{3}\hlstd{}\hlopt{{]},}\\
+\hllin{20\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{4}\hlstd{}\hlopt{{]},}\\
+\hllin{21\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{5}\hlstd{}\hlopt{{]},}\\
+\hllin{22\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{6}\hlstd{}\hlopt{{]},}\\
+\hllin{23\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{7}\hlstd{}\hlopt{{]},}\\
+\hllin{24\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{8}\hlstd{}\hlopt{{]},}\\
+\hllin{25\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{9}\hlstd{}\hlopt{{]},}\\
+\hllin{26\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{key\textunderscore data}\hlopt{{[}(}\hlstd{i}\hlopt{{-}}\hlstd{}\hlnum{1}\hlstd{}\hlopt{){*}}\hlstd{}\hlnum{10}\hlstd{}\hlopt{+}\hlstd{}\hlnum{10}\hlstd{}\hlopt{{]}}\\
+\hllin{27\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ \ \ \ \ }\hlstd{}\hlopt{);}\\
+\hllin{28\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{end}\\
+\hllin{29\ }\hlstd{}\hlkwa{end\ }\\
+\hllin{30\ }\hlstd{}\\
+\hllin{31\ }\hlkwa{function\ }\hlstd{}\hlkwd{macro\textunderscore end}\hlstd{}\hlopt{(}\hlstd{data}\hlopt{)\ }\\
+\hllin{32\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwb{print}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"macro\textunderscore end}\hlesc{$\backslash$n}\hlstr{"}\hlstd{}\hlopt{);}\\
+\hllin{33\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwd{flag\textunderscore set}\hlstd{}\hlopt{(}\hlstd{}\hlnum{0}\hlstd{}\hlopt{,}\hlstd{}\hlnum{0}\hlstd{}\hlopt{);}\hlstd{\ \ \ \ \ \ \ \ \ \ }\hlopt{}\hlstd{}\hlslc{{-}{-}keyboard\ disable}\\
+\hllin{34\ }\hlstd{}\hlkwa{end\ }\\
+\hllin{35\ }\hlstd{}\\
+\hllin{36\ }\hlkwa{function\ }\hlstd{}\hlkwd{macro\textunderscore start}\hlstd{}\hlopt{(}\hlstd{data}\hlopt{)}\hlstd{\ \ }\hlopt{}\\
+\hllin{37\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwb{print}\hlstd{}\hlopt{(}\hlstd{}\hlstr{"macro\textunderscore start}\hlesc{$\backslash$n}\hlstr{"}\hlstd{}\hlopt{);}\\
+\hllin{38\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{if\ }\hlstd{macro\textunderscore flag\ }\hlkwa{then}\\
+\hllin{39\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{macro\textunderscore flag}\hlopt{=}\hlstd{}\hlkwa{false}\hlstd{}\hlopt{;}\\
+\hllin{40\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{macro\textunderscore end}\hlstd{}\hlopt{(}\hlstd{data}\hlopt{);}\\
+\hllin{41\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwa{return\ }\\
+\hllin{42\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{else}\\
+\hllin{43\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{key\textunderscore index}\hlopt{=}\hlstd{}\hlnum{1}\hlstd{}\hlopt{;}\\
+\hllin{44\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{}\hlkwd{flag\textunderscore set}\hlstd{}\hlopt{(}\hlstd{}\hlnum{0}\hlstd{}\hlopt{,}\hlstd{}\hlnum{1}\hlstd{}\hlopt{);}\hlstd{\ \ \ \ \ \ }\hlopt{}\hlstd{}\hlslc{{-}{-}keyboard\ enable}\\
+\hllin{45\ }\hlstd{}\hlstd{\ \ \ \ \ \ \ \ }\hlstd{macro\textunderscore flag}\hlopt{=}\hlstd{}\hlkwa{true}\hlstd{}\hlopt{;}\\
+\hllin{46\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlkwa{end}\\
+\hllin{47\ }\hlstd{\\
+\hllin{48\ }}\hlstd{\ \ \ \ }\hlstd{}\\
+\hllin{49\ }\hlkwa{end\ }\\
+\hllin{50\ }\hlstd{}\\
+\hllin{51\ }\hlslc{{-}{-}main}\\
+\hllin{52\ }\hlstd{key\textunderscore data}\hlopt{=\{}\hlstd{n}\hlopt{=}\hlstd{}\hlnum{300}\hlstd{}\hlopt{\};}\\
+\hllin{53\ }\hlstd{key\textunderscore index}\hlopt{=}\hlstd{}\hlnum{1}\hlstd{}\hlopt{;}\\
+\hllin{54\ }\hlstd{macro\textunderscore flag}\hlopt{=}\hlstd{}\hlkwa{false}\hlstd{}\hlopt{;}\\
+\hllin{55\ }\hlstd{event}\hlopt{=\{}\hlstd{key\textunderscore handle}\hlopt{,}\hlstd{mouse\textunderscore handle}\hlopt{,}\hlstd{macro\textunderscore start}\hlopt{,}\hlstd{macro\textunderscore play}\hlopt{\}}\\
+\hllin{56\ }\hlstd{}\\
+\hllin{57\ }\hlkwd{key\textunderscore register}\hlstd{}\hlopt{(}\hlstd{}\hlnum{3}\hlstd{}\hlcom{{-}{-}{[}{[}macro\textunderscore start{]}{]}}\hlstd{}\hlopt{,}\hlstd{}\hlstr{'o'}\hlstd{}\hlopt{,}\hlstd{}\hlstr{"rctrl"}\hlstd{}\hlopt{)}\\
+\hllin{58\ }\hlstd{}\hlkwd{key\textunderscore register}\hlstd{}\hlopt{(}\hlstd{}\hlnum{4}\hlstd{}\hlcom{{-}{-}{[}{[}macro\textunderscore start{]}{]}}\hlstd{}\hlopt{,}\hlstd{}\hlstr{'i'}\hlstd{}\hlopt{,}\hlstd{}\hlstr{"rctrl"}\hlstd{}\hlopt{)}\\
+\hllin{59\ }\hlstd{}\\
+\hllin{60\ }\hlkwa{while\ }\hlstd{}\hlnum{1\ }\hlstd{}\hlkwa{do\ }\\
+\hllin{61\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{a}\hlopt{=\{}\hlstd{}\hlkwd{wait\textunderscore event}\hlstd{}\hlopt{()\};}\\
+\hllin{62\ }\hlstd{}\hlstd{\ \ \ \ }\hlstd{}\hlopt{(}\hlstd{event}\hlopt{{[}}\hlstd{a}\hlopt{{[}}\hlstd{}\hlnum{10}\hlstd{{]}{]}}\hlopt{)(}\hlstd{a}\hlopt{);}\\
+\hllin{63\ }\hlstd{}\hlkwa{end\ }\hlstd{}\\
+\mbox{}
+\normalfont
+\normalsize
