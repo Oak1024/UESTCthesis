@@ -5,23 +5,74 @@
 由于本系统的核心优势之一是跨平台，所以笔者测试了本系统在常用的四个带有USB接口的软硬件平台上本系统的功能实现的完整性：
 \subsection{ubuntu下测试}
 所有功能正常。
-\subsection{windows下测试}
+\subsection{Windows下测试}
 windows对USB设备反应速度较慢，所以在极少数情况下会出现USB枚举失败的情况。其他所有功能正常。
 \subsection{OS/X下测试}
-OS/X系统下鼠标使用不流畅，因此鼠标手势功能测试结果并没有说服力，所以没有进行鼠标手势功能的测试。其他所有功能正常。
+OS/X系统没有home与end键，所以键盘宏的相应功能无法实现。其他功能正常。
+
+
 
 \section{功能测试}
+以下功能在Windows7环境下测试。
+\begin{enumerate}
+\item 改键功能
+\threelinetable[htbp]{tabgaijian}{0.3\textwidth}{lcr}{改键功能测试表}
+{原始键&目标键&结果\\
+}{
+CTRL   &ALT   &正常\\
+ALT    &SHIFT &正常\\
+GUI    &CTRL  &正常\\
+SHIFT  &GUI   &正常\\
+}{
+\item
+}
 
+如表\ref{tabgaijian}所示，目前可以实现控制键（CTRL,ALT,GUI,SHIFT）的改键，四个控制键都通过了测试。
+\item 键盘宏
+\threelinetable[htbp]{tabmacro}{0.35\textwidth}{lcr}{键盘宏功能测试表}
+{快捷键&目标效果&结果\\
+}{
+\verb|SHIFT+1|   &18200258888   &正常\\
+\verb|SHIFT+2|    &2011042040022 &正常|\\
+\verb|右CTRL+N|    &下一行 &正常|\\
+\verb|右CTRL+D|  &del   &正常|\\
+}{
+\item
+}
+如表\ref{tabmacro}所示，通过键盘宏进行emacs方向、翻页、换行快捷键模拟，与通过键盘宏输出字符串的功能，都通过了测试。
+\item 蓝牙KVM
+\threelinetable[htbp]{tabbt}{0.3\textwidth}{lcr}{蓝牙KVM测试表}
+{距离（cm）&效果\\
+}{
+100          &  正常\\
+200         &正常\\
+300 &有明显延迟\\
+400 &无信号\\
+}{
+\item
+}
+如表\ref{tabbt}所示，本系统可以在0~2m范围内使用蓝牙KVM功能，足够日常桌面办公使用。
+\item 语音识别
+\threelinetable[htbp]{tabyuyin}{0.4\textwidth}{lcr}{语音识别功能测试表}
+{语音输入&目标效果&成功率\\
+}{
+向前   &向前翻页   &\verb|10/10|\\
+向后    &向后翻页 &\verb|8/10|\\
+桌面    &回到桌面  &\verb|6/10|\\
+关机  &关机   &\verb|10/10|\\
+}{
+\item
+}
+如表\ref{tabyuyin}所示，语音识别功能测试成功率根据具体需要识别的语音而不同。LD3320芯片使用中容易出现接触不良的情况，且MIC 电路焊接容易脱落。
 
-鼠标手势功能在定义鼠标手势数量较少的情况下测试正常。如果定义手势较多则由于算法不够完善，容易出现混淆。、
+\item Lua脚本
 
-在线编程功能测试正常。不过由于板上SPI接口的FLASH芯片写入速度较慢，所以写入需要的时间较长。如果在写入时进行复位或断电，有可能造成文件系统的损坏。
-
-lua脚本使用上文中的例子进行测试，功能正常。由于Lua使用c语言实现，速度很快，使用时没有延迟的感觉。
-
+Lua脚本使用上文中的例子进行测试，功能正常。由于Lua使用c语言实现，速度很快，使用时没有延迟的感觉。不过由于板上SPI接口的FLASH芯片写入速度较慢，所以写入需要的时间较长。如果在写入时进行复位或断电，有可能造成文件系统的损坏
+\end{enumerate}
 \section{硬件外观展示}
 \pic[h]{系统内部展示}{width=3in}{pp1}
 \pic[h]{系统外观展示}{width=3in}{pp2}
+\pic[h]{系统运行时展示}{width=3in}{pp3}
 
 
 
